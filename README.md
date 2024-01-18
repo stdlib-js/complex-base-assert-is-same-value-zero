@@ -336,7 +336,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/complex-base-assert-is-same-value-zero/main/LICENSE
 
-[@stdlib/complex/base/assert/is-same-value]: https://github.com/stdlib-js/stdlib
+[@stdlib/complex/base/assert/is-same-value]: https://github.com/stdlib-js/complex-base-assert-is-same-value
 
 </section>
 

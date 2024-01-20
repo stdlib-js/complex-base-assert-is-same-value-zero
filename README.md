@@ -45,38 +45,30 @@ limitations under the License.
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/complex-base-assert-is-same-value-zero
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-isSameValueZero = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-base-assert-is-same-value-zero@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var isSameValueZero = require( 'path/to/vendor/umd/complex-base-assert-is-same-value-zero/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-base-assert-is-same-value-zero@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.isSameValueZero;
-})();
-</script>
+var isSameValueZero = require( '@stdlib/complex-base-assert-is-same-value-zero' );
 ```
 
 #### isSameValueZero( z1, z2 )
@@ -137,14 +129,9 @@ var out = isSameValueZero( z1, z2 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-base-assert-is-same-value-zero@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var Complex128 = require( '@stdlib/complex-float64' );
+var isSameValueZero = require( '@stdlib/complex-base-assert-is-same-value-zero' );
 
 var z1 = new Complex128( 5.0, 3.0 );
 var z2 = new Complex128( 5.0, 3.0 );
@@ -160,11 +147,6 @@ z1 = new Complex128( NaN, 3.0 );
 z2 = new Complex128( NaN, 3.0 );
 out = isSameValueZero( z1, z2 );
 // returns true
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -173,7 +155,101 @@ out = isSameValueZero( z1, z2 );
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/complex/base/assert/is_same_value_zero.h"
+```
+
+#### stdlib_base_complex128_is_same_value_zero( z1, z2 )
+
+Tests whether two double-precision complex floating-point numbers are the same value.
+
+```c
+#include "stdlib/complex/float64.h"
+#include <stdbool.h>
+
+stdlib_complex128_t z1 = stdlib_complex128( 5.0, 2.0 );
+stdlib_complex128_t z2 = stdlib_complex128( 5.0, 2.0 );
+
+bool v = stdlib_base_complex128_is_same_value_zero( z1, z2 );
+```
+
+The function accepts the following arguments:
+
+-   **z1**: `[in] stdlib_complex128_t` first double-precision complex floating-point number.
+-   **z2**: `[in] stdlib_complex128_t` second double-precision complex floating-point number.
+
+```c
+bool stdlib_base_complex128_is_same_value_zero( const stdlib_complex128_t z1, const stdlib_complex128_t z2 );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/complex/base/assert/is_same_value_zero.h"
+#include "stdlib/complex/float64.h"
+#include <stdbool.h>
+#include <stdio.h>
+
+int main( void ) {
+    const stdlib_complex128_t z[] = {
+        stdlib_complex128( 5.0, 2.0 ),
+        stdlib_complex128( -2.0, 1.0 ),
+        stdlib_complex128( 0.0, -0.0 ),
+        stdlib_complex128( 0.0/0.0, 0.0/0.0 )
+    };
+
+    bool v;
+    int i;
+    for ( i = 0; i < 4; i++ ) {
+        v = stdlib_base_complex128_is_same_value_zero( z[ i ], z[ i ] );
+        printf( "Same value? %s\n", ( v ) ? "True" : "False" );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
 
@@ -210,11 +286,6 @@ For more information on the project, filing bug reports and feature requests, an
 
 ---
 
-## License
-
-See [LICENSE][stdlib-license].
-
-
 ## Copyright
 
 Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
@@ -230,8 +301,8 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/complex-base-assert-is-same-value-zero.svg
 [npm-url]: https://npmjs.org/package/@stdlib/complex-base-assert-is-same-value-zero
 
-[test-image]: https://github.com/stdlib-js/complex-base-assert-is-same-value-zero/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/complex-base-assert-is-same-value-zero/actions/workflows/test.yml?query=branch:main
+[test-image]: https://github.com/stdlib-js/complex-base-assert-is-same-value-zero/actions/workflows/test.yml/badge.svg?branch=v0.2.0
+[test-url]: https://github.com/stdlib-js/complex-base-assert-is-same-value-zero/actions/workflows/test.yml?query=branch:v0.2.0
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/complex-base-assert-is-same-value-zero/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/complex-base-assert-is-same-value-zero?branch=main
@@ -258,9 +329,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 [esm-url]: https://github.com/stdlib-js/complex-base-assert-is-same-value-zero/tree/esm
 [branches-url]: https://github.com/stdlib-js/complex-base-assert-is-same-value-zero/blob/main/branches.md
 
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/complex-base-assert-is-same-value-zero/main/LICENSE
-
-[@stdlib/complex/base/assert/is-same-value]: https://github.com/stdlib-js/complex-base-assert-is-same-value/tree/umd
+[@stdlib/complex/base/assert/is-same-value]: https://github.com/stdlib-js/complex-base-assert-is-same-value
 
 </section>
 
